@@ -1,0 +1,20 @@
+{
+  "name": "local-ghost",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "DEBUG=ghost:* grunt dev",
+    "test": "grunt validate --verbose",
+    "init": "cd node_modules/ghost && yarn global add knex-migrator ember-cli grunt-cli && yarn install && grunt symlink && grunt init || true",
+    "copy": "mv node_modules/ghost/content . && mkdir node_modules/ghost/content && ln -s ../../content/ content",
+    "database": "knex-migrator init --mgpath node_modules/ghost"
+  },
+  "dependencies": {
+    "ghost": "^1.17.3"
+  },
+  "devDependencies": {
+    "knex-migrator": "^3.0.7"
+  }
+}
